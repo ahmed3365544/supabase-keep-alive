@@ -1,0 +1,16 @@
+name: Supabase Keep Alive
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"  # كل 30 دقيقة
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send keep-alive ping to Supabase
+        run: |
+          curl -X GET "https://pbuqnxcuxkppsdjsnbat.supabase.co/rest/v1/blood_donors?select=id" \
+            -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBidXFueHVjeGtwcHNkanNuYmF0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgxOTU1NzgsImV4cCI6MjA2Mzc3MTU3OH0.FJSC5PxOV8W84FB8aT8Sb-RGahf4slw3UVbj27Om3Og" \
+            -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBidXFueHVjeGtwcHNkanNuYmF0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgxOTU1NzgsImV4cCI6MjA2Mzc3MTU3OH0.FJSC5PxOV8W84FB8aT8Sb-RGahf4slw3UVbj27Om3Og"
